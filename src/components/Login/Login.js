@@ -1,11 +1,26 @@
 // import React, { useContext } from 'react';
 import React from 'react';
+import { useHistory, useLocation } from 'react-router';
 import useAuth from '../../hooks/useAuth/useAuth';
 // import useFirebase from '../../hooks/useFirebase/useFirebase';
 
 
 const Login = () => {
     const {googleSignIn}=useAuth();
+    // useLocation for redirect location
+    const location = useLocation();
+    // useHistory for redirect page
+    const history = useHistory();
+    //redirect_url
+    const redirect_url = location.state?.from || "/home";
+
+    // googleSignIn handler
+    const googleSignInHandler = ()=>{
+        googleSignIn()
+        .then(result=>{
+            history.push(redirect_url);
+        })
+    }
     return (
         <div style={{width:"20%",margin:"auto"}}>
             <h1>Please Login</h1>
@@ -19,7 +34,7 @@ const Login = () => {
                     <br /><br />
                     <span><b>or </b></span>
                 </form>
-                   <button onClick={googleSignIn} type="submit">signIn with google</button>
+                   <button onClick={googleSignInHandler} type="submit">signIn with google</button>
             </div>
         </div>
     );
