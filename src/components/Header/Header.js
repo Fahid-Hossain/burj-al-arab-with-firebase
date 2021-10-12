@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import header from '../../images/header.png';
 import logo from '../../images/icons/logo.png';
-import useFirebase from '../../hooks/useFirebase/useFirebase';
+import useAuth from '../../hooks/useAuth/useAuth';
+// import useFirebase from '../../hooks/useFirebase/useFirebase';
 
 const Header = () => {
-    const {user,logOut}=useFirebase();
+    const {user,logOut}=useAuth();
     return (
         <div style={{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${header})` }} className="header">
             <nav className="nav">
