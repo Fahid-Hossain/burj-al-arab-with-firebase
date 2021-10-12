@@ -10,31 +10,32 @@ import Login from './components/Login/Login';
 import Book from './components/Book/Book';
 import Header from './components/Header/Header';
 import AuthProvider from './context/AuthProvider';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 function App() {
   return (
-   <AuthProvider>
+    <AuthProvider>
       <Router>
-      <Header />
-      <Switch>
-        <Route path="/home">
-          <Home />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/book">
-          <Book />
-        </Route>
-        <Route path="/book/:bedType">
-          <Book />
-        </Route>
-        <Route exact path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
-   </AuthProvider>
+        <Header />
+        <Switch>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <PrivateRoute path="/book">
+            <Book />
+          </PrivateRoute>
+          <Route path="/book/:bedType">
+            <Book />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
+    </AuthProvider>
   );
 }
 
